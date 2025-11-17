@@ -1249,77 +1249,78 @@
         ></textarea>
       </div>
 
-      <div class="card">
-        <div class="card-heading-row">
-          <div class="card-heading">Payment details</div>
-          <div class="card-hint">Choose a channel and read the guide.</div>
-        </div>
+       <div class="card">
+    <div class="card-heading-row">
+      <div class="card-heading">Payment details</div>
+      <div class="card-hint">Choose a channel and read the guide.</div>
+    </div>
 
-        <div class="inline-row">
-          <div class="choice-row">
-            <span class="text">
-              <label>
-                <input type="radio" name="paymentMethod" value="Bank Transfer (GoTyme)" required />
-                Bank transfer via GoTyme
-              </label>
-            </span>
-          </div>
-          <div class="choice-row">
-            <span class="text">
-              <label>
-                <input type="radio" name="paymentMethod" value="GCash" />
-                GCash
-              </label>
-            </span>
-          </div>
-          <div class="choice-row">
-            <span class="text">
-              <label>
-                <input type="radio" name="paymentMethod" value="On-site Payment" />
-                On site payment
-              </label>
-            </span>
-          </div>
-        </div>
-
-        <div class="summary-box" id="paymentInstructions">
-          <strong>Payment instructions</strong><br />
-          Select a payment method to view account details and reminders.
-        </div>
-
-      <div class="card">
-        <div class="card-heading-row">
-          <div class="card-heading">Fee summary</div>
-          <div class="card-hint">Review before submitting.</div>
-        </div>
-
-        <div class="summary-box" id="priceSummary">
-          <div class="summary-line">
-            <span>Base package</span>
-            <span id="basePrice">₱0</span>
-          </div>
-          <div class="summary-line">
-            <span>Add ons</span>
-            <span id="addonsPrice">₱0</span>
-          </div>
-          <div class="summary-line total">
-            <span>Total</span>
-            <span id="totalPrice">₱0</span>
-          </div>
-        </div>
-
-        <label for="remarks" style="margin-top:10px;display:block;">Remarks or special requests</label>
-        <textarea id="remarks" name="remarks" placeholder="Short notes for the organizers"></textarea>
-
-        <div class="btn-row">
-          <button type="submit" class="btn-main">
-            <span>Submit registration</span>
-            <span class="icon">↗</span>
-          </button>
-        </div>
-
-        <div id="statusMsg" class="status"></div>
+    <div class="inline-row">
+      <div class="choice-row">
+        <span class="text">
+          <label>
+            <input type="radio" name="paymentMethod" value="Bank Transfer (GoTyme)" required />
+            Bank transfer via GoTyme
+          </label>
+        </span>
       </div>
+      <div class="choice-row">
+        <span class="text">
+          <label>
+            <input type="radio" name="paymentMethod" value="GCash" />
+            GCash
+          </label>
+        </span>
+      </div>
+      <div class="choice-row">
+        <span class="text">
+          <label>
+            <input type="radio" name="paymentMethod" value="On-site Payment" />
+            On site payment
+          </label>
+        </span>
+      </div>
+    </div>
+
+    <div class="summary-box" id="paymentInstructions">
+      <strong>Payment instructions</strong><br />
+      Select a payment method to view account details and reminders.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-heading-row">
+      <div class="card-heading">Fee summary</div>
+      <div class="card-hint">Review before submitting.</div>
+    </div>
+
+    <div class="summary-box" id="priceSummary">
+      <div class="summary-line">
+        <span>Base package</span>
+        <span id="basePrice">₱0</span>
+      </div>
+      <div class="summary-line">
+        <span>Add ons</span>
+        <span id="addonsPrice">₱0</span>
+      </div>
+      <div class="summary-line total">
+        <span>Total</span>
+        <span id="totalPrice">₱0</span>
+      </div>
+    </div>
+
+    <label for="remarks" style="margin-top:10px;display:block;">Remarks or special requests</label>
+    <textarea id="remarks" name="remarks" placeholder="Short notes for the organizers"></textarea>
+
+    <div class="btn-row">
+      <button type="submit" class="btn-main">
+        <span>Submit registration</span>
+        <span class="icon">↗</span>
+      </button>
+    </div>
+
+    <div id="statusMsg" class="status"></div>
+  </div>
     </form>
   </section>
 
