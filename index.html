@@ -1,0 +1,1545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PIIE Mindanao Summit 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page-bg: #e6f0ff;
+      --surface-main: #fcfbff;
+      --surface-soft: #eef2ff;
+      --surface-alt: #ddf5ff;
+      --accent: #6366f1;
+      --accent-strong: #4f46e5;
+      --accent-alt: #22d3ee;
+      --accent-soft: rgba(99, 102, 241, 0.14);
+      --border-subtle: #c7d2fe;
+      --border-strong: #818cf8;
+      --text-main: #020617;
+      --text-muted: #6b7280;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0, #e0f2fe 0, transparent 55%),
+        radial-gradient(circle at 90% 0, #f5e9ff 0, transparent 55%),
+        radial-gradient(circle at 50% 100%, #bfdbfe 0, #e6f0ff 60%);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 22px 14px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(248, 250, 252, 0.7) 0, transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(191, 219, 254, 0.65) 0, transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(221, 214, 254, 0.7) 0, transparent 60%);
+      opacity: 0.75;
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    .layout {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .sidebar {
+      background: radial-gradient(circle at top left, #e5e7ff 0, #fcfbff 45%, #ddf5ff 100%);
+      border-radius: 26px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: sticky;
+      top: 18px;
+      align-self: flex-start;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 15% 0, #e0f2fe 0, #6366f1 35%, #0f172a 88%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.09em;
+    }
+
+    .logo-text-main {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .sidebar-tag {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sidebar-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-alt);
+      box-shadow: 0 0 8px rgba(34, 211, 238, 0.7);
+    }
+
+    .sidebar-summary {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .sidebar-box {
+      padding: 10px 11px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(129, 140, 248, 0.08), rgba(34, 211, 238, 0.06));
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+    }
+
+    .sidebar-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .sidebar-meta-item-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .sidebar-meta-item-value {
+      font-weight: 600;
+    }
+
+    .sidebar-nav-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      font-size: 13px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .sidebar-nav a span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .sidebar-nav a.active,
+    .sidebar-nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      transform: translateX(1px);
+    }
+
+    .sidebar-nav a.active span.dot {
+      background: var(--accent-strong);
+      box-shadow: 0 0 5px rgba(79, 70, 229, 0.8);
+    }
+
+    .sidebar-footer {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-footer strong {
+      font-weight: 600;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section {
+      background: var(--surface-main);
+      border-radius: 26px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 22px 22px;
+    }
+
+    .section.alt {
+      background: var(--surface-soft);
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 740px;
+      line-height: 1.6;
+    }
+
+    #home {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 18px;
+      background: radial-gradient(circle at top left, #eef2ff 0, #fcfbff 45%, #ddf5ff 100%);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-right: 6px;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .hero-chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(99, 102, 241, 0.8);
+    }
+
+    .hero-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      color: var(--accent-strong);
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .hero-highlight-card {
+      border-radius: 13px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+
+    .hero-highlight-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .hero-highlight-value {
+      font-weight: 600;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      color: #f9fafb;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-main span.icon {
+      font-size: 16px;
+      transform: translateY(1px);
+    }
+
+    .hero-cta-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 260px;
+    }
+
+    .hero-steps {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .hero-steps-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      margin-bottom: 10px;
+    }
+
+    .hero-steps-track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 8px;
+      align-items: start;
+      font-size: 11px;
+    }
+
+    .hero-step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .hero-step-title {
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .hero-step-text {
+      grid-column: 1 / -1;
+      margin-left: 30px;
+      color: var(--text-muted);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-panel {
+      width: 100%;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, #eef2ff 0, #fcfbff 50%, #ddf5ff 100%);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-panel-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(129, 140, 248, 0.18);
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .hero-panel-body {
+      border-radius: 14px;
+      background: var(--surface-alt);
+      border: 1px dashed rgba(129, 140, 248, 0.5);
+      padding: 10px 9px;
+    }
+
+    .hero-panel-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      text-align: center;
+      color: var(--accent-strong);
+    }
+
+    .hero-panel-caption {
+      font-size: 12px;
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .hero-panel-image-wrap {
+      margin-top: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #c7d2fe;
+      height: 180px;
+    }
+
+    .hero-panel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-panel-footer {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-panel-footer-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 9px;
+      margin-bottom: 3px;
+    }
+
+    .hero-panel-footer-value {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .hero-panel-secondary .hero-panel-body {
+      background: #eef2ff;
+      border-style: solid;
+    }
+
+    .hero-panel-secondary-list {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-panel-secondary-list div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .hero-panel-secondary-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 9px;
+    }
+
+    .hero-panel-secondary-value {
+      font-weight: 600;
+    }
+
+    #about .section-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .about-card {
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 12px 12px 11px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .about-aside {
+      display: grid;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .about-tag-card {
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(129, 140, 248, 0.16), rgba(34, 211, 238, 0.1));
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      padding: 10px 11px;
+    }
+
+    .about-tag-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      margin-bottom: 4px;
+    }
+
+    .about-points {
+      margin-top: 4px;
+      padding-left: 16px;
+      color: var(--text-muted);
+    }
+
+    .about-points li {
+      margin-bottom: 2px;
+    }
+
+    .card {
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      margin-bottom: 12px;
+    }
+
+    .card-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .card-heading {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .card-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 12px;
+      background: #f9fafb;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.16);
+      background: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .inline-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .inline-row > div {
+      flex: 1 1 180px;
+    }
+
+    .choice-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .choice-row span.text {
+      flex: 1 1 auto;
+    }
+
+    .price {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-strong);
+      white-space: nowrap;
+    }
+
+    .qty-input {
+      width: 70px;
+    }
+
+    .summary-box {
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .summary-line.total {
+      margin-top: 4px;
+      padding-top: 5px;
+      border-top: 1px solid #d1d5db;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .status {
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .status.success {
+      color: #16a34a;
+    }
+
+    .status.error {
+      color: #b91c1c;
+    }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .merch-card {
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 11px 9px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .merch-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 3px;
+    }
+
+    .contact-list {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .contact-list a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    .contact-list a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1040px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .sidebar {
+        position: static;
+        order: -1;
+      }
+      #home {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .hero-panel {
+        flex: 1 1 260px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 14px 10px;
+      }
+
+      .section {
+        padding: 16px 16px 18px;
+      }
+
+      #home {
+        padding: 16px 16px 18px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-steps-track {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .merch-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #about .section-body {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-mark">MSC</div>
+        <div>
+          <div class="logo-text-main">PIIE Mindanao</div>
+          <div class="logo-text-sub">Student Council Summit 2026</div>
+        </div>
+      </div>
+
+  <div class="sidebar-tag">
+    <span class="sidebar-tag-dot"></span>
+    <span>Regional student leadership</span>
+  </div>
+
+  <p class="sidebar-summary">
+    The summit brings together Industrial Engineering councils in Mindanao for focused work on leadership, projects, and IE student support.
+  </p>
+
+  <div class="sidebar-box">
+    <div class="sidebar-meta">
+      <div>
+        <div class="sidebar-meta-item-label">Year</div>
+        <div class="sidebar-meta-item-value">2026</div>
+      </div>
+      <div>
+        <div class="sidebar-meta-item-label">Region</div>
+        <div class="sidebar-meta-item-value">Mindanao</div>
+      </div>
+      <div>
+        <div class="sidebar-meta-item-label">Focus</div>
+        <div class="sidebar-meta-item-value">IE councils</div>
+      </div>
+      <div>
+        <div class="sidebar-meta-item-label">Format</div>
+        <div class="sidebar-meta-item-value">In person</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sidebar-nav-title">Sections</div>
+    <nav class="sidebar-nav">
+      <a href="#home" class="active">
+        <span>Overview</span>
+        <span class="dot"></span>
+      </a>
+      <a href="#about">
+        <span>About</span>
+        <span class="dot"></span>
+      </a>
+      <a href="#registration">
+        <span>Registration</span>
+        <span class="dot"></span>
+      </a>
+      <a href="#merch">
+        <span>Merch</span>
+        <span class="dot"></span>
+      </a>
+      <a href="#contact">
+        <span>Contact</span>
+        <span class="dot"></span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    For delegation concerns, coordinate with the summit core team using the contact channels.
+  </div>
+</aside>
+
+<main class="main">
+  <section id="home" class="section">
+    <div class="hero-left">
+      <div class="hero-chip-row">
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span>Mindanao student council summit 2026</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        A regional space<br />
+        for <span>IE student leaders</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        IE student leaders from Mindanao meet here to align council plans and agree on shared projects for the next academic year.
+      </p>
+
+      <div class="hero-highlights">
+        <div class="hero-highlight-card">
+          <div class="hero-highlight-label">Who joins</div>
+          <div class="hero-highlight-value">Officers from IE councils and organizations</div>
+        </div>
+        <div class="hero-highlight-card">
+          <div class="hero-highlight-label">Purpose</div>
+          <div class="hero-highlight-value">Coordinate plans and support IE students</div>
+        </div>
+        <div class="hero-highlight-card">
+          <div class="hero-highlight-label">Scope</div>
+          <div class="hero-highlight-value">Industrial Engineering programs in Mindanao</div>
+        </div>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="#registration" class="btn-main">
+          <span>Go to registration form</span>
+          <span class="icon">↗</span>
+        </a>
+        <p class="hero-cta-caption">
+          Slots per school are limited. Early registration helps secure seats for your delegation.
+        </p>
+      </div>
+
+      <div class="hero-steps">
+        <div class="hero-steps-label">Three steps to register</div>
+        <div class="hero-steps-track">
+          <div class="hero-step">
+            <div class="hero-step-number">01</div>
+            <div class="hero-step-title">Fill delegate details</div>
+            <div class="hero-step-text">
+              Enter your basic information and council details.
+            </div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-number">02</div>
+            <div class="hero-step-title">Choose package</div>
+            <div class="hero-step-text">
+              Pick a summit package and set merch quantities.
+            </div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-number">03</div>
+            <div class="hero-step-title">Confirm payment</div>
+            <div class="hero-step-text">
+              Follow payment instructions and wait for confirmation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-right">
+      <div class="hero-panel">
+        <div class="hero-panel-header">
+          <div class="hero-panel-pill">Summit snapshot</div>
+          <div>PIIE MSC</div>
+        </div>
+        <div class="hero-panel-body">
+          <div class="hero-panel-title">Industrial Engineering student summit</div>
+          <div class="hero-panel-caption">Planned summit year 2026 with Mindanao IE councils</div>
+          <div class="hero-panel-image-wrap">
+            <img
+              class="hero-panel-image"
+              src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Students in a conference setting"
+            />
+          </div>
+          <div class="hero-panel-footer">
+            <div>
+              <div class="hero-panel-footer-label">Core themes</div>
+              <div class="hero-panel-footer-value">
+                Council work and coordination
+              </div>
+            </div>
+            <div>
+              <div class="hero-panel-footer-label">Participants</div>
+              <div class="hero-panel-footer-value">
+                IE councils from Mindanao schools
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel hero-panel-secondary">
+        <div class="hero-panel-header">
+          <div class="hero-panel-pill">Program preview</div>
+          <div>Key blocks</div>
+        </div>
+        <div class="hero-panel-body">
+          <div class="hero-panel-title">Summit flow</div>
+          <div class="hero-panel-caption">Short, focused blocks to keep councils engaged</div>
+          <div class="hero-panel-secondary-list">
+            <div>
+              <span class="hero-panel-secondary-label">Opening</span>
+              <span class="hero-panel-secondary-value">Regional overview</span>
+            </div>
+            <div>
+              <span class="hero-panel-secondary-label">Sharing</span>
+              <span class="hero-panel-secondary-value">Campus council updates</span>
+            </div>
+            <div>
+              <span class="hero-panel-secondary-label">Planning</span>
+              <span class="hero-panel-secondary-value">Joint projects per cluster</span>
+            </div>
+            <div>
+              <span class="hero-panel-secondary-label">Closing</span>
+              <span class="hero-panel-secondary-value">Next steps and contacts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="section-header">
+      <h2 class="section-title">About the summit</h2>
+      <p class="section-subtitle">
+        The Mindanao Student Chapter of the Philippine Institute of Industrial Engineers links IE student organizations in the region. The summit serves as a workspace for councils to set common goals and align activities.
+      </p>
+    </div>
+    <div class="section-body" id="about-body">
+      <div class="about-card">
+        Delegates share quick updates on membership, events, academics, and student concerns from their campus. This gives a clear view of how councils are doing and where help is needed.
+        <br /><br />
+        Activities use short inputs and small group work. Schools go home with a regional calendar, contact persons in other councils, and clear follow up tasks.
+      </div>
+      <div class="about-aside">
+        <div class="about-tag-card">
+          <div class="about-tag-title">Summit goals</div>
+          <ul class="about-points">
+            <li>Agree on a regional IE student calendar</li>
+            <li>Clarify shared academic and student issues</li>
+            <li>Form groups to lead joint projects</li>
+          </ul>
+        </div>
+        <div class="about-tag-card">
+          <div class="about-tag-title">Typical delegates</div>
+          <ul class="about-points">
+            <li>Council presidents and core officers</li>
+            <li>Project and events heads</li>
+            <li>Finance, logistics, and external officers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="registration" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Registration form</h2>
+      <p class="section-subtitle">
+        Fill in delegate details, choose a package, and set merch quantities. The fee summary updates based on your choices.
+      </p>
+    </div>
+
+    <form id="regForm">
+      <div class="card">
+        <div class="card-heading-row">
+          <div class="card-heading">Delegate information</div>
+          <div class="card-hint">Use an email and number you check often.</div>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" required />
+          </div>
+          <div>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="school">School or university</label>
+            <select id="school" name="school" required>
+              <option value="">Select school</option>
+              <option value="ADDU">ADDU</option>
+              <option value="LDCU">LDCU</option>
+              <option value="LPU">LPU</option>
+              <option value="MATS">MATS</option>
+              <option value="MCM">MCM</option>
+              <option value="NDDU">NDDU</option>
+              <option value="PSUC">PSUC</option>
+              <option value="USM">USM</option>
+              <option value="UST">UST</option>
+              <option value="WMSU">WMSU</option>
+              <option value="XU">XU</option>
+              <option value="Other">Other school</option>
+            </select>
+          </div>
+          <div>
+            <label for="otherSchool">If other, write school</label>
+            <input type="text" id="otherSchool" name="otherSchool" placeholder="Only when not in the list" />
+          </div>
+          <div>
+            <label for="yearLevel">Year level</label>
+            <input type="text" id="yearLevel" name="yearLevel" placeholder="Example 3rd year" />
+          </div>
+          <div>
+            <label for="contactNumber">Contact number</label>
+            <input type="text" id="contactNumber" name="contactNumber" required />
+          </div>
+          <div>
+            <label for="fbLink">Facebook profile link</label>
+            <input type="text" id="fbLink" name="fbLink" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-heading-row">
+          <div class="card-heading">Summit and membership package</div>
+          <div class="card-hint">Choose one base option.</div>
+        </div>
+        <div class="choice-row">
+          <span class="text">
+            <label>
+              <input type="radio" name="package" value="Full Package - 2000" data-price="2000" required />
+              Full package summit registration plus membership fee
+            </label>
+          </span>
+          <span class="price">₱2,000</span>
+        </div>
+        <div class="choice-row">
+          <span class="text">
+            <label>
+              <input type="radio" name="package" value="Membership Only - 199" data-price="199" />
+              Membership fee only without summit attendance
+            </label>
+          </span>
+          <span class="price">₱199</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-heading-row">
+          <div class="card-heading">Merchandise add ons</div>
+          <div class="card-hint">Set a quantity for each item. Zero means none.</div>
+        </div>
+
+        <div class="inline-row">
+          <div class="choice-row">
+            <span class="text">Sticker</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Sticker" data-price="25" />
+            <span class="price">₱25</span>
+          </div>
+          <div class="choice-row">
+            <span class="text">Basic PIIE MSC shirt (S to XXXL)</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Basic Shirt" data-price="199" />
+            <span class="price">₱199</span>
+          </div>
+        </div>
+
+        <div class="inline-row">
+          <div class="choice-row">
+            <span class="text">Cap</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Cap" data-price="199" />
+            <span class="price">₱199</span>
+          </div>
+          <div class="choice-row">
+            <span class="text">Customized PIIE MSC shirt (S to XXXL)</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Customized Shirt" data-price="299" />
+            <span class="price">₱299</span>
+          </div>
+        </div>
+
+        <div class="inline-row">
+          <div class="choice-row">
+            <span class="text">Premium PIIE MSC shirt (S to XXXL)</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Premium Shirt" data-price="399" />
+            <span class="price">₱399</span>
+          </div>
+          <div class="choice-row">
+            <span class="text">Handheld fan</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Handheld Fan" data-price="80" />
+            <span class="price">₱80</span>
+          </div>
+        </div>
+
+        <div class="inline-row">
+          <div class="choice-row">
+            <span class="text">Hoodie (S to XXXL)</span>
+            <input type="number" min="0" value="0" class="qty-input addon-qty" data-label="Hoodie" data-price="599" />
+            <span class="price">₱599</span>
+          </div>
+        </div>
+
+        <label for="sizeNotes">Sizes and notes for shirts and hoodie</label>
+        <textarea
+          id="sizeNotes"
+          name="sizeNotes"
+          placeholder="Example 2 basic shirts L, 1 premium XL, 1 hoodie M"
+        ></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-heading-row">
+          <div class="card-heading">Payment details</div>
+          <div class="card-hint">Choose a channel and read the guide.</div>
+        </div>
+
+        <div class="inline-row">
+          <div class="choice-row">
+            <span class="text">
+              <label>
+                <input type="radio" name="paymentMethod" value="Bank Transfer (GoTyme)" required />
+                Bank transfer via GoTyme
+              </label>
+            </span>
+          </div>
+          <div class="choice-row">
+            <span class="text">
+              <label>
+                <input type="radio" name="paymentMethod" value="GCash" />
+                GCash
+              </label>
+            </span>
+          </div>
+          <div class="choice-row">
+            <span class="text">
+              <label>
+                <input type="radio" name="paymentMethod" value="On-site Payment" />
+                On site payment
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="summary-box" id="paymentInstructions">
+          <strong>Payment instructions</strong><br />
+          Select a payment method to view account details and reminders.
+        </div>
+
+        <div class="inline-row" style="margin-top:10px;">
+          <div>
+            <label for="paidStatus">Payment status for organizers</label>
+            <select id="paidStatus" name="paidStatus">
+              <option value="Unpaid">Unpaid</option>
+              <option value="Paid - Not Verified">Paid not yet verified</option>
+              <option value="Paid & Verified">Paid and verified</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-heading-row">
+          <div class="card-heading">Fee summary</div>
+          <div class="card-hint">Review before submitting.</div>
+        </div>
+
+        <div class="summary-box" id="priceSummary">
+          <div class="summary-line">
+            <span>Base package</span>
+            <span id="basePrice">₱0</span>
+          </div>
+          <div class="summary-line">
+            <span>Add ons</span>
+            <span id="addonsPrice">₱0</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total</span>
+            <span id="totalPrice">₱0</span>
+          </div>
+        </div>
+
+        <label for="remarks" style="margin-top:10px;display:block;">Remarks or special requests</label>
+        <textarea id="remarks" name="remarks" placeholder="Short notes for the organizers"></textarea>
+
+        <div class="btn-row">
+          <button type="submit" class="btn-main">
+            <span>Submit registration</span>
+            <span class="icon">↗</span>
+          </button>
+        </div>
+
+        <div id="statusMsg" class="status"></div>
+      </div>
+    </form>
+  </section>
+
+  <section id="merch" class="section alt">
+    <div class="section-header">
+      <h2 class="section-title">Merch line up</h2>
+      <p class="section-subtitle">
+        These pieces are available for pre order in the form. Prices stay fixed for this summit batch.
+      </p>
+    </div>
+
+    <div class="merch-grid">
+      <div class="merch-card">
+        <div class="merch-title">Basic shirt</div>
+        <div>Standard PIIE MSC shirt in summit colors. Sizes S to XXXL.</div>
+        <div class="price" style="margin-top:4px;">₱199</div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-title">Premium shirt</div>
+        <div>Thicker fabric with a more detailed print.</div>
+        <div class="price" style="margin-top:4px;">₱399</div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-title">Customized shirt</div>
+        <div>Choice to add council name or chapter label.</div>
+        <div class="price" style="margin-top:4px;">₱299</div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-title">Sticker and cap</div>
+        <div>Summit vinyl sticker with a structured cap.</div>
+        <div class="price" style="margin-top:4px;">₱25 / ₱199</div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-title">Handheld fan</div>
+        <div>Compact fan for warm and crowded rooms.</div>
+        <div class="price" style="margin-top:4px;">₱80</div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-title">Hoodie</div>
+        <div>Soft hoodie with PIIE MSC print.</div>
+        <div class="price" style="margin-top:4px;">₱599</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Contact channels</h2>
+      <p class="section-subtitle">
+        Reach the organizers for questions on registration, payment, delegation size, or support.
+      </p>
+    </div>
+    <div class="contact-list">
+      <div>
+        <strong>Email:</strong>
+        <a href="mailto:piie.mindanaostudentcouncil@gmail.com">piie.mindanaostudentcouncil@gmail.com</a>
+      </div>
+      <div>
+        <strong>Facebook:</strong>
+        <a href="https://www.facebook.com/PIIEMSC/about" target="_blank">facebook.com/PIIEMSC</a>
+      </div>
+      <div>
+        <strong>Instagram:</strong>
+        <a href="https://www.instagram.com/piiemsc" target="_blank">@piiemsc</a>
+      </div>
+    </div>
+  </section>
+</main>
+  </div>
+  <script>
+    const sidebarLinks = document.querySelectorAll(".sidebar-nav a")
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        sidebarLinks.forEach(l => l.classList.remove("active"))
+        link.classList.add("active")
+      })
+    })
+
+    const packageRadios = document.querySelectorAll('input[name="package"]')
+    const addonInputs = document.querySelectorAll(".addon-qty")
+    const basePriceSpan = document.getElementById("basePrice")
+    const addonsPriceSpan = document.getElementById("addonsPrice")
+    const totalPriceSpan = document.getElementById("totalPrice")
+
+    function updatePrices() {
+      let basePrice = 0
+      packageRadios.forEach(r => {
+        if (r.checked) {
+          basePrice = Number(r.dataset.price || 0)
+        }
+      })
+
+      let addonTotal = 0
+      addonInputs.forEach(input => {
+        const qty = Number(input.value || 0)
+        const unit = Number(input.dataset.price || 0)
+        addonTotal += qty * unit
+      })
+
+      const total = basePrice + addonTotal
+      basePriceSpan.textContent = "₱" + basePrice.toLocaleString()
+      addonsPriceSpan.textContent = "₱" + addonTotal.toLocaleString()
+      totalPriceSpan.textContent = "₱" + total.toLocaleString()
+    }
+
+    packageRadios.forEach(r => r.addEventListener("change", updatePrices))
+    addonInputs.forEach(i => i.addEventListener("input", updatePrices))
+
+    const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]')
+    const instructionsDiv = document.getElementById("paymentInstructions")
+
+    function updateInstructions() {
+      let method = ""
+      paymentRadios.forEach(r => {
+        if (r.checked) {
+          method = r.value
+        }
+      })
+
+      if (method === "Bank Transfer (GoTyme)") {
+        instructionsDiv.innerHTML = `
+          <strong>Bank transfer via GoTyme</strong><br>
+          Account name: <em>Mindanao Student Summit</em><br>
+          Bank: GoTyme<br>
+          Account number: <em>012983034579</em><br>
+          Keep a screenshot of the deposit slip for checking and verification.
+        `
+      } else if (method === "GCash") {
+        instructionsDiv.innerHTML = `
+          <strong>GCash</strong><br>
+          GCash number: <em>09173635183</em><br>
+          Account name: <em>Mindanao Student Summit</em><br>
+          Save the transaction receipt. Organizers may ask for it during verification.
+        `
+      } else if (method === "On-site Payment") {
+        instructionsDiv.innerHTML = `
+          <strong>On site payment</strong><br>
+          Payment in cash at the registration booth on the day of the summit.<br>
+          Bring your valid school ID for checking.
+        `
+      } else {
+        instructionsDiv.innerHTML = `
+          <strong>Payment instructions</strong><br>
+          Select a payment method to view account details and reminders.
+        `
+      }
+    }
+
+    paymentRadios.forEach(r => r.addEventListener("change", updateInstructions))
+
+    const form = document.getElementById("regForm")
+    const statusMsg = document.getElementById("statusMsg")
+
+    const SCRIPT_URL = "https://docs.google.com/spreadsheets/d/1TR-Co6nrrjtZUuBUWtJi9PHHyAFQPzCzEURVwRcUyZU/edit?gid=0#gid=0"
+
+    function buildAddonsSummary() {
+      const parts = []
+      addonInputs.forEach(input => {
+        const qty = Number(input.value || 0)
+        if (qty > 0) {
+          const label = input.dataset.label
+          const price = Number(input.dataset.price || 0)
+          parts.push(`${label} x${qty} (₱${(price * qty).toLocaleString()})`)
+        }
+      })
+      return parts.length ? parts.join(", ") : "None"
+    }
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault()
+      statusMsg.textContent = "Submitting registration..."
+      statusMsg.className = "status"
+
+      updatePrices()
+
+      const fd = new FormData(form)
+
+      const schoolSelect = document.getElementById("school")
+      const otherSchoolInput = document.getElementById("otherSchool")
+      if (schoolSelect.value === "Other" && otherSchoolInput.value.trim() !== "") {
+        fd.set("school", `Other - ${otherSchoolInput.value.trim()}`)
+      }
+
+      fd.append("basePrice", basePriceSpan.textContent.replace("₱", "").replace(/,/g, ""))
+      fd.append("addonsPrice", addonsPriceSpan.textContent.replace("₱", "").replace(/,/g, ""))
+      fd.append("totalPrice", totalPriceSpan.textContent.replace("₱", "").replace(/,/g, ""))
+      fd.append("addonsSummary", buildAddonsSummary())
+
+      try {
+        const res = await fetch(SCRIPT_URL, { method: "POST", body: fd })
+        if (res.ok) {
+          statusMsg.textContent = "Registration submitted. Wait for confirmation from the organizers."
+          statusMsg.className = "status success"
+          form.reset()
+          updatePrices()
+          updateInstructions()
+        } else {
+          throw new Error("Response not OK")
+        }
+      } catch (err) {
+        console.error(err)
+        statusMsg.textContent = "There was an error during submission. Try again or contact the organizers."
+        statusMsg.className = "status error"
+      }
+    })
+
+    updatePrices()
+    updateInstructions()
+  </script>
+</body>
+</html>
